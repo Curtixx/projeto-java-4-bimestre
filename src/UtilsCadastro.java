@@ -41,7 +41,7 @@ public class UtilsCadastro extends UtilsIMC {
         int idUser = 0;
 
         if(idLogin == null){
-            String sqlInsertCadastro = "INSERT INTO login VALUES (default,'"+nome+"', '"+email+"', '"+senha+"')";
+            String sqlInsertCadastro = "INSERT INTO login VALUES (default,'"+email+"', '"+senha+"', '"+nome+"')";
             st.executeUpdate(sqlInsertCadastro);
 
             String[] sqlInsertCadastroSeparado = sqlInsertCadastro.split(" ");

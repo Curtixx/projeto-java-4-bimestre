@@ -10,21 +10,21 @@ public class UtilsPaciente extends UtilsLogin {
         super(banco);
     }
 
-    public boolean validaValores(String email, String senha) {
-        if(email.indexOf('@') == -1 || email.indexOf(".com") == -1 && senha.length() < 4){
+    public boolean validaValores(String email, String senha, String nome) {
+        if(email.indexOf('@') == -1 || email.indexOf(".com") == -1 && senha.length() < 4 && nome.length() < 3){
             JOptionPane.showMessageDialog(null, "Login invalido");
             return false;
         }
         return true;
     }
 
-    public boolean alterarLogin(String email, String senha) throws SQLException {
-        if(!this.validaValores(email, senha)) {
+    public boolean alterarLogin(String email, String senha, String nome) throws SQLException {
+        if(!this.validaValores(email, senha, nome)) {
             return false;
         }
         Statement st = getBanco().con.createStatement();
 
-        String sqlUpdatePaciente = "UPDATE login SET email = '"+email+"', senha = '"+senha+"'";
+        String sqlUpdatePaciente = "UPDATE login SET email = '"+email+"', senha = '"+senha+"', nome = '"+nome+"'";
         st.executeUpdate(sqlUpdatePaciente);
 
         String[] sqlSelectLoginSeparado = sqlUpdatePaciente.split(" ");

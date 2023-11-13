@@ -6,7 +6,7 @@ public class Banco {
     public Connection con;
     private String c_user="root";
     private String c_senha="";
-    private String c_fonte="jdbc:mysql://localhost/projeto_java";
+    private String c_fonte="jdbc:mysql://localhost/projeto_java2";
 
     public Statement getSt(){
         return st;

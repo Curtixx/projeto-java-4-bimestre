@@ -73,13 +73,42 @@ public class IMC extends JFrame {
         caixaPeso.setBounds(240,120,200,20);
         JButton btn = new JButton("Calcular");
         JButton btnPerfil = new JButton("Alterar perfil");
-        JButton btnClassificacao = new JButton("Classificação");
+        JButton btnPercertual = new JButton("Percentual");
+        JButton btnRelatorio = new JButton("Gerar relatorio");
         this.tela.add(btn);
         this.tela.add(btnPerfil);
-        this.tela.add(btnClassificacao);
+        this.tela.add(btnPercertual);
+        this.tela.add(btnRelatorio);
         btn.setBounds(220, 160, 200, 20);
         btnPerfil.setBounds(220, 200, 200, 20);
-        btnClassificacao.setBounds(220, 240, 200, 20);
+        btnPercertual.setBounds(220, 240, 200, 20);
+        btnRelatorio.setBounds(220, 280, 200, 20);
+
+        btnPercertual.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Percentuais percentuais = new Percentuais(getBanco());
+                    dispose();
+
+                } catch (Exception err) {
+                    System.out.println(err.getMessage());
+                }
+
+            }
+        });
+
+        btnRelatorio.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    UtilsIMC utilsIMC = new UtilsIMC(getBanco());
+                    String caminho = "C:\\Users\\Curtis\\IdeaProjects\\Projeto4Bi\\src\\relatorio.html";
+                    utilsIMC.gerarRelatorio(caminho);
+                } catch (Exception err) {
+                    System.out.println(err.getMessage());
+                }
+
+            }
+        });
 
         btn.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -104,17 +133,6 @@ public class IMC extends JFrame {
             }
         });
 
-        btnClassificacao.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    Classificacao classificacao = new Classificacao(getBanco());
-                    dispose();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-            }
-        });
 
 
     }
