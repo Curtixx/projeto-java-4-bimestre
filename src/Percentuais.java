@@ -36,7 +36,7 @@ public class Percentuais extends JFrame {
         Font fonte_titulo = new Font("Arial", Font.PLAIN, 30);
         titulo.setFont(fonte_titulo);
         PreparedStatement preparedStatement = null;
-        String sql = "SELECT count(*) AS qtd FROM classificacao GROUP BY classificacao;";
+        String sql = "SELECT count(id) AS qtd FROM classificacao;";
         preparedStatement = getBanco().con.prepareStatement(sql);
         ResultSet rs = preparedStatement.executeQuery();
         String[] sqlSeparado = sql.split(" ");
@@ -65,6 +65,7 @@ public class Percentuais extends JFrame {
             }
 
         }
+
 
     }
 }

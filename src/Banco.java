@@ -1,6 +1,7 @@
 import java.sql.*;
 
-public class Banco {
+public class
+Banco {
     private Statement st;
     private ResultSet rs;
     public Connection con;

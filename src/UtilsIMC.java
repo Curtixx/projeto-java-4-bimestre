@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.*;
+import java.util.Arrays;
 
 public class UtilsIMC extends UtilsLogin {
 
@@ -21,13 +22,17 @@ public class UtilsIMC extends UtilsLogin {
         String qtd = null;
         String classificacao = null;
         int[] qtds = new int[6];
+        String[] classificaoArray = new String[6];
         int i = 0;
         while (rs.next()) {
             qtd = rs.getString("QTD");
             classificacao = rs.getString("CLASSIFICACAO");
             qtds[i] = Integer.parseInt(qtd);
+            classificaoArray[i] = classificacao;
+            System.out.println(qtd);
             i++;
         }
+
         String sqlInnerJoin = "SELECT id_paciente, altura, peso, imc, classificacao FROM paciente INNER JOIN classificacao ON paciente.id = classificacao.id_paciente;";
         preparedStatement = getBanco().con.prepareStatement(sqlInnerJoin);
         ResultSet rs2 = preparedStatement.executeQuery();
@@ -103,6 +108,8 @@ public class UtilsIMC extends UtilsLogin {
         FileWriter fw = new FileWriter(caminho, true);
         fw.write(grafico+"\n");
         fw.close();
+        JOptionPane.showMessageDialog(null, "Relatorio gerado!!");
+
     }
 
     public boolean validarValores(String altura, String peso) {
@@ -122,7 +129,7 @@ public class UtilsIMC extends UtilsLogin {
         String res = null;
         if(result <= 18.5) {
             res = "Magreza";
-        } else if(result > 18.5 && result <= 24.9) {
+        } else if(result > 18.5 && result <= 24.99) {
             res = "Saudável";
         } else if(result > 25.0 && result <= 29.9){
             res = "Sobrepeso";

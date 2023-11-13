@@ -101,7 +101,7 @@ public class IMC extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 try {
                     UtilsIMC utilsIMC = new UtilsIMC(getBanco());
-                    String caminho = "C:\\Users\\Curtis\\IdeaProjects\\Projeto4Bi\\src\\relatorio.html";
+                    String caminho = "C:\\Users\\curti\\OneDrive\\Documentos\\Projetos\\projeto-java-4-bimestre\\src\\relatorio.html";
                     utilsIMC.gerarRelatorio(caminho);
                 } catch (Exception err) {
                     System.out.println(err.getMessage());
